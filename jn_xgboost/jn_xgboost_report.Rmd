@@ -1,0 +1,40 @@
+---
+output: html_document
+---
+
+```{r echo=FALSE}
+title_var = xg_run_name
+```
+
+---
+title: `r title_var`
+---
+
+```{r setup, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<style>
+body {
+    position: absolute;
+    left: 0px;}
+</style>
+
+## Run Information
+
+```{r echo=FALSE, include=FALSE}
+library(knitr)
+library(kableExtra)
+```
+
+```{r echo=FALSE}
+kable(xg_tmp_settings, caption = NULL) %>%
+  kable_styling(bootstrap_options = c("striped"), full_width = F, position = "left")
+```
+
+## Run Results
+
+```{r pressure, echo=FALSE}
+kable(xg_run_results, caption = NULL) %>%
+  kable_styling(bootstrap_options = c("striped"))
+```
