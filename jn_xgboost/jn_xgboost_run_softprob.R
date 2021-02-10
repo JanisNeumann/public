@@ -14,7 +14,8 @@ if(xg_nfold != FALSE) {
                                         colsample_bytree = xg_tmp_strat$Colsample,
                                         gamma = xg_tmp_strat$Gamma,
                                         min_child_weight = xg_tmp_strat$MCW,
-                                        nthread = xg_threads),
+                                        nthread = xg_threads,
+                                        eval_metric = "merror"),
                           nfold = xg_nfold,
                           early_stopping_rounds = xg_stop)
     
@@ -33,6 +34,7 @@ if(xg_nfold != FALSE) {
                            label = xg_labels_train,
                            nrounds = xg_tmp_strat$Rounds,
                            objective = "multi:softprob",
+                           eval_metric = "merror",
                            num_class = length(unique(xg_labels_train)),
                            eta = xg_tmp_strat$Eta,
                            max_depth = xg_tmp_strat$Depth,
