@@ -5,14 +5,16 @@ if(xg_nfold != FALSE) {
     
     if(xg_tmp_strat$yTrf == "log2") {
       xg_tmp_labels_train = log2(xg_labels_train)
-    } else if(xg_age_trf == "sqrt") {
+    } else if(xg_tmp_strat$yTrf == "sqrt") {
       xg_tmp_labels_train = sqrt(xg_labels_train)
+    } else {
+      xg_tmp_labels_train = xg_labels_train
     }
     
     xg_tmp_model = xgb.cv(data = xg_data_train,
                           label = xg_tmp_labels_train,
                           nrounds = xg_tmp_strat$Rounds,
-                          params = list(objective = xg_tmp_strat$Objective,
+                          params = list(objective = "reg:squarederror",
                                         eta = xg_tmp_strat$Eta,
                                         max_depth = xg_tmp_strat$Depth,
                                         subsample = xg_tmp_strat$Rowsample,
@@ -36,14 +38,16 @@ if(xg_nfold != FALSE) {
     
     if(xg_tmp_strat$yTrf == "log2") {
       xg_tmp_labels_train = log2(xg_labels_train)
-    } else if(xg_age_trf == "sqrt") {
+    } else if(xg_tmp_strat$yTrf == "sqrt") {
       xg_tmp_labels_train = sqrt(xg_labels_train)
+    } else {
+      xg_tmp_labels_train = xg_labels_train
     }
     
     xg_tmp_model = xgboost(data = xg_data_train,
                            label = xg_tmp_labels_train,
                            nrounds = xg_tmp_strat$Rounds,
-                           objective = xg_tmp_strat$Objective,
+                           objective = "reg:squarederror",
                            eta = xg_tmp_strat$Eta,
                            max_depth = xg_tmp_strat$Depth,
                            subsample = xg_tmp_strat$Rowsample,
