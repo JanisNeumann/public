@@ -1,6 +1,6 @@
 if(xg_nfold != FALSE) {
   
-  colnames(xg_settings) = c("Objective", "y_Transformation", "Learning_Rate", "Max_Tree_Depth",
+  colnames(xg_settings) = c("y_Transformation", "Learning_Rate", "Max_Tree_Depth",
                             "Subsampling_Cells", "Subsampling_Genes", "Gamma", "Min_Child_Weight", "Max_Iterations")
   xg_run_results = cbind.data.frame(#ID = 1:nrow(xg_settings),
     xg_settings,
@@ -39,7 +39,7 @@ if(xg_nfold != FALSE) {
   
 } else {
   
-  colnames(xg_settings) = c("Objective", "y_Transformation", "Learning_Rate", "Max_Tree_Depth",
+  colnames(xg_settings) = c("y_Transformation", "Learning_Rate", "Max_Tree_Depth",
                             "Subsampling_Cells", "Subsampling_Genes", "Gamma", "Min_Child_Weight", "Iterations")
   xg_run_results = cbind.data.frame(#ID = 1:nrow(xg_settings),
     xg_settings,
